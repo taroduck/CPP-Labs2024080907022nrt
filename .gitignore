@@ -12,7 +12,8 @@ Debug/
 Release/
 
 # VS Code local settings
-.vscode/
+.vscode/*
+!.vscode/tasks.json
 
 # Temporary files
 *.tmp

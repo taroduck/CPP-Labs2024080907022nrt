@@ -1,0 +1,408 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "process",
+      "label": "Lab04: Build demo",
+      "command": "C:/mingw64/bin/g++.exe",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Wshadow",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-fdiagnostics-color=always",
+        "-g3",
+        "-O0",
+        "${workspaceFolder}/Lab04/Executor.cpp",
+        "${workspaceFolder}/Lab04/main.cpp",
+        "-o",
+        "${workspaceFolder}/Lab04/main.exe"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "C:\\mingw64\\bin;${env:PATH}"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "detail": "Build the Lab04 demo and Executor component.",
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "Lab04: Build unit tests",
+      "command": "C:/mingw64/bin/g++.exe",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Wshadow",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-fdiagnostics-color=always",
+        "-g3",
+        "-O0",
+        "-I",
+        "${workspaceFolder}/Lab04",
+        "${workspaceFolder}/Lab04/Executor.cpp",
+        "${workspaceFolder}/Lab04/tests/executor_tests.cpp",
+        "-o",
+        "${workspaceFolder}/Lab04/tests/executor_tests.exe"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "C:\\mingw64\\bin;${env:PATH}"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "Build the standalone Executor unit tests.",
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "Lab04: Run unit tests",
+      "command": "${workspaceFolder}/Lab04/tests/executor_tests.exe",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "C:\\mingw64\\bin;${env:PATH}"
+        }
+      },
+      "dependsOn": "Lab04: Build unit tests",
+      "problemMatcher": [],
+      "group": "test",
+      "detail": "Build and run all Executor unit tests.",
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "Lab03: Build demo",
+      "command": "C:/mingw64/bin/g++.exe",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Wshadow",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-fdiagnostics-color=always",
+        "-g3",
+        "-O0",
+        "${workspaceFolder}/Lab03/Executor.cpp",
+        "${workspaceFolder}/Lab03/main.cpp",
+        "-o",
+        "${workspaceFolder}/Lab03/main.exe"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "C:\\mingw64\\bin;${env:PATH}"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "detail": "Build the Lab03 demo and Executor component.",
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "Lab03: Build unit tests",
+      "command": "C:/mingw64/bin/g++.exe",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Wshadow",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-fdiagnostics-color=always",
+        "-g3",
+        "-O0",
+        "-I",
+        "${workspaceFolder}/Lab03",
+        "${workspaceFolder}/Lab03/Executor.cpp",
+        "${workspaceFolder}/Lab03/tests/executor_tests.cpp",
+        "-o",
+        "${workspaceFolder}/Lab03/tests/executor_tests.exe"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "C:\\mingw64\\bin;${env:PATH}"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "Build the standalone Executor unit tests.",
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "Lab03: Run unit tests",
+      "command": "${workspaceFolder}/Lab03/tests/executor_tests.exe",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "C:\\mingw64\\bin;${env:PATH}"
+        }
+      },
+      "dependsOn": "Lab03: Build unit tests",
+      "problemMatcher": [],
+      "group": "test",
+      "detail": "Build and run all Executor unit tests.",
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "Lab02: Build demo",
+      "command": "C:/mingw64/bin/g++.exe",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Wshadow",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-fdiagnostics-color=always",
+        "-g3",
+        "-O0",
+        "${workspaceFolder}/Lab02/Executor.cpp",
+        "${workspaceFolder}/Lab02/main.cpp",
+        "-o",
+        "${workspaceFolder}/Lab02/main.exe"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "C:\\mingw64\\bin;${env:PATH}"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "detail": "Build the Lab02 demo and Executor component.",
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "Lab02: Build unit tests",
+      "command": "C:/mingw64/bin/g++.exe",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Wshadow",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-fdiagnostics-color=always",
+        "-g3",
+        "-O0",
+        "-I",
+        "${workspaceFolder}/Lab02",
+        "${workspaceFolder}/Lab02/Executor.cpp",
+        "${workspaceFolder}/Lab02/tests/executor_tests.cpp",
+        "-o",
+        "${workspaceFolder}/Lab02/tests/executor_tests.exe"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "C:\\mingw64\\bin;${env:PATH}"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "Build the standalone Executor unit tests.",
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "Lab02: Run unit tests",
+      "command": "${workspaceFolder}/Lab02/tests/executor_tests.exe",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "C:\\mingw64\\bin;${env:PATH}"
+        }
+      },
+      "dependsOn": "Lab02: Build unit tests",
+      "problemMatcher": [],
+      "group": "test",
+      "detail": "Build and run all Executor unit tests.",
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "Lab01: Build demo",
+      "command": "C:/mingw64/bin/g++.exe",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Wshadow",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-fdiagnostics-color=always",
+        "-g3",
+        "-O0",
+        "${workspaceFolder}/Lab01/Executor.cpp",
+        "${workspaceFolder}/Lab01/main.cpp",
+        "-o",
+        "${workspaceFolder}/Lab01/main.exe"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "C:\\mingw64\\bin;${env:PATH}"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "detail": "Build the Lab01 demo and Executor component.",
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "Lab01: Build unit tests",
+      "command": "C:/mingw64/bin/g++.exe",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Wshadow",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-fdiagnostics-color=always",
+        "-g3",
+        "-O0",
+        "-I",
+        "${workspaceFolder}/Lab01",
+        "${workspaceFolder}/Lab01/Executor.cpp",
+        "${workspaceFolder}/Lab01/tests/executor_tests.cpp",
+        "-o",
+        "${workspaceFolder}/Lab01/tests/executor_tests.exe"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "C:\\mingw64\\bin;${env:PATH}"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "Build the standalone Executor unit tests.",
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "Lab01: Run unit tests",
+      "command": "${workspaceFolder}/Lab01/tests/executor_tests.exe",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "C:\\mingw64\\bin;${env:PATH}"
+        }
+      },
+      "dependsOn": "Lab01: Build unit tests",
+      "problemMatcher": [],
+      "group": "test",
+      "detail": "Build and run all Executor unit tests.",
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "C/C++: g++.exe build active file",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/scripts/build-active.ps1",
+        "-SourceFile",
+        "${file}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "C:\\mingw64\\bin;${env:PATH}"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "Build the active C++ file with its Executor component and include directory.",
+      "presentation": {
+        "clear": true
+      }
+    }
+  ]
+}

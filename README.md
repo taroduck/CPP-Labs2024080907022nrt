@@ -23,6 +23,10 @@ g++ -std=c++17 -Wall -Wextra -Wpedantic -g3 -O0 -I Lab04 Lab04/Executor.cpp Lab0
 .\Lab04\tests\executor_tests.exe
 ```
 
+VS Code 中打开需要运行的 `.cpp` 文件后，按 `Ctrl+Shift+B` 使用默认构建任务。该任务通过 `scripts/build-active.ps1` 自动加入当前实验的头文件路径并链接 `Executor.cpp`，支持演示程序和 `tests/executor_tests.cpp`。构建组件 `Executor.cpp` 时使用同目录的 `main.cpp` 作为入口。
+
+运行 Lab04 测试可选择“终端 → 运行任务 → Lab04: Run unit tests”；调试时选择 `Lab04: Debug unit tests`（需本地配置）。任务重新运行时会清除对应任务终端的旧输出。
+
 将命令中的 Lab04 替换为 Lab01、Lab02 或 Lab03，可以构建对应实验。演示与测试各有一个 main 入口，需要分别构建；不同实验也应分别构建。
 
 测试无需第三方库，不依赖 assert。失败时打印用例名与原因并返回非零退出码，成功返回 0。四个实验共 182 个测试用例，另有用例内的参考模型序列比对。
