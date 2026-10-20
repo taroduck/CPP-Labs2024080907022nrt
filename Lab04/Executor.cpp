@@ -1,9 +1,5 @@
 #include "Executor.h"
 
-namespace {
-constexpr std::string_view kHeadings = "NESW";
-}
-
 Executor::Executor(std::int32_t x, std::int32_t y, char heading) noexcept
     : pose_{x, y, heading} {}
 
@@ -13,28 +9,33 @@ void Executor::Initialize(std::int32_t x, std::int32_t y, char heading) noexcept
     reversing_ = false;
 }
 
-void Executor::MoveOneStep(bool reverse) noexcept {
-    const std::int32_t step = reverse ? -1 : 1;
+void Executor::MoveOneGrid(bool backward) noexcept {
+    const std::int32_t distance = backward ? -1 : 1;
     switch (pose_.heading) {
-    case 'N': pose_.y += step; break;
-    case 'S': pose_.y -= step; break;
-    case 'E': pose_.x += step; break;
-    case 'W': pose_.x -= step; break;
+    case 'N': pose_.y += distance; break;
+    case 'E': pose_.x += distance; break;
+    case 'S': pose_.y -= distance; break;
+    case 'W': pose_.x -= distance; break;
     }
 }
 
-void Executor::Turn(bool left) noexcept {
-    const auto offset = left ? 3u : 1u;
-    pose_.heading = kHeadings[(kHeadings.find(pose_.heading) + offset) % 4];
+void Executor::RotateQuarterTurn(bool left) noexcept {
+    switch (pose_.heading) {
+    case 'N': pose_.heading = left ? 'W' : 'E'; break;
+    case 'E': pose_.heading = left ? 'N' : 'S'; break;
+    case 'S': pose_.heading = left ? 'E' : 'W'; break;
+    case 'W': pose_.heading = left ? 'S' : 'N'; break;
+    }
 }
 
 void Executor::TurnRound() noexcept {
+    // TR always moves physically forward and turns physically left.
     if (accelerated_) {
-        MoveOneStep(false);
+        MoveOneGrid(false);
     }
-    Turn(true);
-    MoveOneStep(false);
-    Turn(true);
+    RotateQuarterTurn(true);
+    MoveOneGrid(false);
+    RotateQuarterTurn(true);
 }
 
 void Executor::Execute(char command) noexcept {
@@ -46,30 +47,29 @@ void Executor::Execute(char command) noexcept {
         reversing_ = !reversing_;
         break;
     case 'M':
-        MoveOneStep(reversing_);
+        MoveOneGrid(reversing_);
         if (accelerated_) {
-            MoveOneStep(reversing_);
+            MoveOneGrid(reversing_);
         }
         break;
     case 'L':
     case 'R':
         if (accelerated_) {
-            MoveOneStep(reversing_);
+            MoveOneGrid(reversing_);
         }
-        Turn((command == 'L') != reversing_);
+        RotateQuarterTurn((command == 'L') != reversing_);
         break;
     }
 }
 
 void Executor::Execute(std::string_view commands) noexcept {
-    for (std::string_view::size_type index = 0; index < commands.size();) {
-        // Valid input guarantees that T is immediately followed by R.
-        if (commands[index] == 'T') {
+    for (std::string_view::size_type i = 0; i < commands.size(); ++i) {
+        // Consume TR as one token within this string call.
+        if (commands.substr(i, 2) == "TR") {
             TurnRound();
-            index += 2;
+            ++i;
         } else {
-            Execute(commands[index]);
-            ++index;
+            Execute(commands[i]);
         }
     }
 }

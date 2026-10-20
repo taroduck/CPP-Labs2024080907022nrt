@@ -15,7 +15,6 @@ public:
     explicit Executor(std::int32_t x = 0, std::int32_t y = 0,
                       char heading = 'N') noexcept;
 
-    // Initialization restores normal speed and forward movement.
     void Initialize(std::int32_t x = 0, std::int32_t y = 0,
                     char heading = 'N') noexcept;
     void Execute(char command) noexcept;
@@ -25,8 +24,9 @@ public:
     [[nodiscard]] bool IsReversing() const noexcept;
 
 private:
-    void MoveOneStep(bool reverse) noexcept;
-    void Turn(bool left) noexcept;
+    // These primitives never apply F/B modes themselves.
+    void MoveOneGrid(bool backward) noexcept;
+    void RotateQuarterTurn(bool left) noexcept;
     void TurnRound() noexcept;
 
     Pose pose_;

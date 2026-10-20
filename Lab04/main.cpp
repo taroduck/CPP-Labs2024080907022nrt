@@ -1,34 +1,30 @@
 #include "Executor.h"
 
 #include <iostream>
+#include <string_view>
 
 namespace {
-void PrintState(const char* label, const Executor& car) {
+void PrintState(std::string_view label, const Executor& car) {
     const Pose pose = car.Query();
-    std::cout << label << "(" << pose.x << ", " << pose.y << ", "
-              << pose.heading << "), accelerated=" << std::boolalpha
-              << car.IsAccelerated() << ", reversing=" << car.IsReversing() << '\n';
+    std::cout << label << ": (" << pose.x << ", " << pose.y << ", "
+              << pose.heading << "), F=" << std::boolalpha
+              << car.IsAccelerated() << ", B=" << car.IsReversing() << '\n';
 }
 }
 
 int main() {
+    for (const std::string_view commands : {"TR", "BTR", "FTR", "FBTR"}) {
+        Executor car;
+        car.Execute(commands);
+        PrintState(commands, car);
+    }
+
     Executor car;
-    PrintState("Initial:       ", car);
-    car.Execute("TR");
-    PrintState("Normal TR:     ", car);
-    car.Initialize();
-    car.Execute("BTR");
-    PrintState("Reverse TR:    ", car);
-    car.Initialize();
-    car.Execute("FTR");
-    PrintState("Fast TR:       ", car);
-    car.Initialize();
-    car.Execute("BFTR");
-    PrintState("Fast reverse TR:", car);
+    car.Execute("FBTR");
     car.Execute('M');
-    PrintState("Then M:        ", car);
+    PrintState("FBTR then M", car);
     car.Initialize();
-    car.Execute("BMFTRBMFTR");
-    PrintState("Mixed batch:   ", car);
+    car.Execute("TRR");
+    PrintState("TRR", car);
     return 0;
 }
